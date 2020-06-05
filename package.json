@@ -14,6 +14,9 @@
 		"release": "VER=$(daily-version) run-s build version release:*"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.10.2",
+		"@babel/preset-env": "^7.10.2",
+		"babel-loader": "^8.1.0",
 		"chrome-webstore-upload-cli": "^1.2.0",
 		"copy-webpack-plugin": "^5.0.3",
 		"daily-version": "^0.12.0",

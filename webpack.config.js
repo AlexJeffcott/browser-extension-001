@@ -14,6 +14,15 @@ module.exports = {
 		path: path.join(__dirname, 'distribution'),
 		filename: '[name].js'
 	},
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader'
+			}
+		]
+	},
 	plugins: [
 		new SizePlugin(),
 		new CopyWebpackPlugin([
