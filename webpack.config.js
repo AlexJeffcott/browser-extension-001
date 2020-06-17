@@ -7,8 +7,10 @@ module.exports = {
 	devtool: 'source-map',
 	stats: 'errors-only',
 	entry: {
-		background: './source/background',
-		options: './source/options'
+		"background-script": './source/background-script',
+		"options-ui-script": './source/options-ui-script',
+		"browser-action-script": './source/browser-action-script',
+		"content-script": './source/content-script'
 	},
 	output: {
 		path: path.join(__dirname, 'distribution'),
@@ -20,7 +22,15 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader'
-			}
+			},
+			{
+				test: /\.(png)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+					},
+				],
+			},
 		]
 	},
 	plugins: [

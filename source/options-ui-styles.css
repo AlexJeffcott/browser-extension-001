@@ -1,0 +1,61 @@
+html {
+	min-width: 550px;
+	min-height: 550px;
+	overflow-x: hidden; /* Required to hide horizontal scroll on Firefox */
+}
+
+/* For use with screen readers */
+.sr-only {
+	display: none;
+}
+
+/* Firefox only */
+.only-firefox {
+	display: none;
+}
+
+@-moz-document url-prefix('') {
+	.only-firefox {
+		display: block;
+	}
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	margin:	5%;
+}
+
+.options_language_container > label > input[type="radio"] {
+	margin: .5rem;
+	padding: .5rem;
+}
+
+.options_blacklist_container > ul {
+	list-style-type: none;
+	margin-left: -2rem;
+}
+
+.options_blacklist_container > input[type="text"] {
+	margin: .5rem;
+	padding: .5rem;
+	width: 300px;
+}
+
+.options_blacklist_container > button {
+	margin: .5rem;
+	padding: .5rem;
+}
+
+.trash_icon {
+	width: 10px;
+	height: 10px;
+	margin-left: 0.2rem;
+	padding-bottom: 0.3rem;
+}
+
+form > button[type="submit"] {
+	margin: 1rem;
+	padding: .5rem;
+}
+
