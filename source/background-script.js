@@ -19,3 +19,64 @@ browser.runtime.onInstalled.addListener(({ reason, previousVersion }) => {
 			break;
 	}
 })
+
+// browser.tabs.executeScript({
+// 	code: 'document.body.style.backgroundColor="orange"'
+// }).then(onExecuted, onError);
+//
+// function onExecuted(result) {
+// 	console.log(result);
+// }
+//
+// function onError(error) {
+// 	console.log(error);
+// }
+//
+// const executing = browser.tabs.executeScript({ file: "/content-script.js", allFrames: true });
+// executing.then(onExecuted, onError);
+
+// function injectIt(){
+// 	chrome.tabs.executeScript({file: "content-script.js", allFrames: true}, function() {
+// 		if(chrome.runtime.lastError) {
+// 			console.error("Script injection failed: " + chrome.runtime.lastError.message);
+// 		}
+// 	});
+// }
+//
+// chrome.tabs.onActivated.addListener(injectIt)
+
+// async function register(_defaultHosts, _excludedHosts, _jsPaths, _cssPaths) {
+// 	return browser.contentScripts.register({
+// 		matches: _defaultHosts,
+// 		excludeGlobs: _excludedHosts,
+// 		js: _jsPaths,
+// 		css: _cssPaths,
+// 		runAt: "document_idle"
+// 	});
+// }
+//
+// const defaultHosts = ["<all_urls>"];
+// const excludedHostGlobs = [
+// 	"*:*.paypal.*/*",
+// 	"*:*.amboss.*/*",
+// 	"*:*medicuja.*/*",
+// 	"*:*google.*/*",
+// 	"*:*ecosia.*/*",
+// 	"*:duckduckgo.*/*",
+// 	"*:mail.yahoo.com/*",
+// 	"*:*.hotmail.*/*",
+// 	"*:*.outlook.com/*",
+// 	"*:*.icloud.*/*"
+// ];
+// const jsPaths = [
+// 	{file: "/browser-polyfill.min.js"},
+// 	{file: "/content-script.js"}
+// ];
+// const cssPaths = [{file: "/content-script-styles.css"}];
+//
+// register(defaultHosts, excludedHostGlobs, jsPaths, cssPaths).then(res => {
+// 	console.log(`!!`, res)
+// 	track()
+// });
+
+

@@ -15,22 +15,9 @@
 		"128": "icon.png"
 	},
 	"permissions": [
-	  	"https://storage.googleapis.com/*",
-	  	"https://cdn.segment.com/*",
-		"storage",
-	  	"tabs",
-	  	"webNavigation"
+		"storage"
 	],
-  	"content_security_policy": "script-src 'unsafe-eval' 'self' https://cdn.segment.com https://js.intercomcdn.com/ https://widget.intercom.io/widget/ https://www.google-analytics.com/; object-src 'self'",
-	"options_ui": {
-		"chrome_style": true,
-		"page": "options-ui-page.html"
-	},
-	"browser_action": {
-	  "browser_style": true,
-	  "default_title": "AMBOSS",
-	  "default_popup": "browser-action-page.html"
-	},
+  	"content_security_policy": "script-src 'unsafe-eval' 'self' https://cdn.segment.com; object-src 'self'",
 	"content_scripts": [
 	  {
 		"exclude_globs": [
@@ -45,11 +32,20 @@
 		  "*:*.outlook.com/*",
 		  "*:*.icloud.*/*"
 		],
-		"matches": ["*://*/*"],
+		"matches": ["<all_urls>"],
 		"css": ["content-script-styles.css"],
-		"js": ["browser-polyfill.min.js","content-script.js"]
+		"js": ["browser-polyfill.min.js", "content-script.js"]
 	  }
 	],
+	"options_ui": {
+		"chrome_style": true,
+		"page": "options-ui-page.html"
+	},
+	"browser_action": {
+	  "browser_style": true,
+	  "default_title": "AMBOSS",
+	  "default_popup": "browser-action-page.html"
+	},
 	"background": {
 		"persistent": false,
 		"page": "background-page.html"

@@ -1,222 +1,123 @@
 /*the popover target*/
 .AMBOSS_MATCH_TOOLTIP > img {
 	position: relative;
-	bottom: 5px;
 	left: 3px;
-	width: 20px;
-	height: 20px;
-}
-
-/*the popover container*/
-.popover-container {
-	margin: 300px;
-}
-@keyframes slide-top {
-	0% {
-		opacity: 0;
-		transform: translateY(-15%);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-@keyframes slide-right {
-	0% {
-		opacity: 0;
-		transform: translateX(15%);
-	}
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
-}
-@keyframes slide-bottom {
-	0% {
-		opacity: 0;
-		transform: translateY(15%);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-@keyframes slide-left {
-	0% {
-		opacity: 0;
-		transform: translateX(-15%);
-	}
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
-}
-.popover {
-	padding: 1.5em;
-	border: 1px solid #aaa;
-	border-radius: 4px;
-	background: white;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-}
-.popover--top {
-	margin-top: -16px;
-	animation: 0.4s slide-top;
-}
-.popover--top::before, .popover--top::after {
-	content: "";
-	position: absolute;
-	top: 100%;
-	left: 50%;
-	margin-left: -8px;
-	border: 8px solid transparent;
-	border-top-color: white;
-}
-.popover--top::before {
-	margin-top: 1px;
-	border-top-color: #6a6a6a;
-}
-.popover--right {
-	margin-left: 16px;
-	animation: 0.4s slide-right;
-}
-.popover--right::before, .popover--right::after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	right: 100%;
-	margin-top: -8px;
-	border: 8px solid transparent;
-	border-right-color: white;
-}
-.popover--right::before {
-	margin-right: 1px;
-	border-right-color: #6a6a6a;
-}
-.popover--bottom {
-	margin-top: 16px;
-	animation: 0.4s slide-bottom;
-}
-.popover--bottom::before, .popover--bottom::after {
-	content: "";
-	position: absolute;
-	bottom: 100%;
-	left: 50%;
-	margin-left: -8px;
-	border: 8px solid transparent;
-	border-bottom-color: white;
-}
-.popover--bottom::before {
-	margin-bottom: 1px;
-	border-bottom-color: #6a6a6a;
-}
-.popover--left {
-	margin-left: -16px;
-	animation: 0.4s slide-left;
-}
-.popover--left::before, .popover--left::after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	left: 100%;
-	margin-top: -8px;
-	border: 8px solid transparent;
-	border-left-color: white;
-}
-.popover--left::before {
-	margin-left: 1px;
-	border-left-color: #6a6a6a;
+	width: 0.9rem;
+	height: 0.9rem;
 }
 
 /*the popover itself*/
 .ambossContent {
-	margin-left: 20px;
-	pointer-events: none;
-}
-.ambossHeader{
 	font-family: Lato;
 	font-style: normal;
 	font-weight: bold;
+	color: #303438;
+	padding: 1.5rem;
+	background-color: white;
+	box-shadow: rgba(61, 74, 84, 0.1) 0 3px 8px 0, rgba(61, 74, 84, 0.06) 0 3px 12px 0;
+	border-radius: 0.3rem;
+}
+
+.ambossHeader {
 	font-size: 16px;
 	line-height: 24px;
-	/* identical to box height, or 150% */
 	letter-spacing: 0.2px;
-	color: #303438;
-	margin-bottom: 10px;
+	padding-bottom: 0.5rem;
 }
+
+.iconAmbossLogo {
+	width: 20px;
+	height: 20px;
+}
+
 .ambossSnippetTitle{
-	font-family: Lato;
-	font-style: normal;
-	font-weight: bold;
 	font-size: 16px;
 	line-height: 24px;
-	/* identical to box height, or 150% */
 	letter-spacing: 0.2px;
-	color: #303438;
 }
+
 .ambossSnippetEtymology{
-	font-family: Lato;
 	font-style: italic;
 	font-weight: normal;
 	font-size: 16px;
 	line-height: 24px;
-	/* identical to box height, or 150% */
 	letter-spacing: 0.2px;
-	color: #303438;
 }
+
 .ambossSnippetDescription{
 	margin-top: 10px;
-	font-family: Lato;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 13.7px;
 	line-height: 24px;
-	/* or 175% */
 	letter-spacing: 0.195714px;
 	color: #51616D;
 }
-.ambossHr {
-	color: #ECF3F7;
-	margin-bottom: 10px;
-	margin-top: 5px;
-}
 
 .ambossFooter {
-	margin-bottom: 0.5em !important;
+	width: calc(100% + 3rem);
+	display: flex;
+	margin-left: -1.5rem;
+	margin-bottom: -1.5rem;
+	flex-direction: column;
+	justify-content: flex-end;
+	border-top: 1px solid rgb(238, 242, 245);
+}
+.ambossFooter:hover {
+	background-color: rgba(238, 242, 245, 0.3);
 }
 
-.ambossFooter a{
-	font-family: Lato;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 17px;
-	line-height: 21px;
-	/* or 124% */
-	letter-spacing: 0.1px;
-	text-decoration-line: underline;
-	color: #1A1C1C;
-	pointer-events: auto;
+.ambossFooter > a {
+	padding: 1rem;
+	display: inline-flex;
+	text-decoration-line: none;
 }
 
-.popover {
-	box-shadow: 0px 3px 8px rgba(61, 74, 84, 0.1), 0px 3px 12px rgba(61, 74, 84, 0.06);
-	border-radius: 8px;
-	opacity: 1.0 !important;
-	max-width: 470px !important;
+.icon_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: -1rem;
+	margin-top: -1rem;
+	margin-bottom: -1rem;
+	min-width: 56px;
+	border-right: 1px solid rgb(238, 242, 245);
+}
 
+.icon_container > svg {
+	color: rgb(153, 167, 179);
+	width: 30px;
+	height: 30px;
 }
-.popover-inner {
-	background-color: white !important;
-	/*!important is not necessary if you place custom.css at the end of your css calls. For the purpose of this demo, it seems to be required in SO snippet*/
-	color: #fff;
-	text-align: left;
-	opacity: 1.0 !important;
+
+.link_arrow_container {
+	display: flex;
+	align-content: center;
+	width: 90%;
+	padding-left: 5%;
+	padding-right: 5%;
 }
-.iconBook {
-	width: 18px;
-	height: 22px;
-	margin-right: 20px;
+
+.link_arrow_container > p {
+	margin: 0;
+	padding: 0;
+	color: rgb(54, 65, 73);
+	font-size: 16px;
+	word-break: break-word;
+	font-weight: 400;
 }
-.iconAmbossLogo {
-	width: 20px;
-	height: 20px;
+
+.arrow_container {
+	margin: 0;
+	padding: 0;
+	margin-left: auto;
+}
+
+.arrow_container > svg {
+	margin: 0;
+	padding: 0;
+	color: rgb(153, 167, 179);
+	width: 24px;
+	height: 24px;
+	flex-shrink: 0;
 }
