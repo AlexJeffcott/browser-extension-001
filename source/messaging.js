@@ -1,10 +1,14 @@
 
-export function sendMessageToContentScript(message, tab=0) {
+export function sendMessageToContentScript(message) {
 	return browser.tabs.query({
 		currentWindow: true,
 		active: true
 	}).then(tabs => browser.tabs.sendMessage(
-		tabs[tab].id,
+		tabs[0].id,
 		message
-	)).catch(console.log)
+	)).catch(console.log);
+}
+
+export function sendMessageToBackgroundScript(message) {
+	return browser.runtime.sendMessage(message).catch(console.log);
 }

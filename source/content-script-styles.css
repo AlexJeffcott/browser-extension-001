@@ -1,12 +1,13 @@
-/*the popover target*/
+/* the popover target */
 .AMBOSS_MATCH_TOOLTIP > img {
 	position: relative;
-	left: 3px;
+	left: 1px;
 	width: 0.9rem;
 	height: 0.9rem;
+	padding-bottom: 0.1rem;
 }
 
-/*the popover itself*/
+/* the popover itself */
 .ambossContent {
 	font-family: Lato;
 	font-style: normal;
@@ -30,13 +31,13 @@
 	height: 20px;
 }
 
-.ambossSnippetTitle{
+.ambossSnippetTitle {
 	font-size: 16px;
 	line-height: 24px;
 	letter-spacing: 0.2px;
 }
 
-.ambossSnippetEtymology{
+.ambossSnippetEtymology {
 	font-style: italic;
 	font-weight: normal;
 	font-size: 16px;
@@ -44,14 +45,14 @@
 	letter-spacing: 0.2px;
 }
 
-.ambossSnippetDescription{
+.ambossSnippetDescription {
 	margin-top: 10px;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 13.7px;
 	line-height: 24px;
 	letter-spacing: 0.195714px;
-	color: #51616D;
+	color: #51616d;
 }
 
 .ambossFooter {
@@ -63,6 +64,7 @@
 	justify-content: flex-end;
 	border-top: 1px solid rgb(238, 242, 245);
 }
+
 .ambossFooter:hover {
 	background-color: rgba(238, 242, 245, 0.3);
 }

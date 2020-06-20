@@ -1,5 +1,5 @@
 body {
-	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif;
+	font-family: Lato, -apple-system, BlinkMacSystemFont, 'segoe ui', 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, arial, sans-serif;
 	margin: 0;
 	background-color: #eef2f5;
 	min-width: 500px;
@@ -13,13 +13,14 @@ button {
 	box-sizing: border-box;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-weight:200;
-	color:rgb(24, 24, 24);
-	text-align:center;
+	font-weight: 200;
+	color: rgb(24, 24, 24);
+	text-align: center;
 	transition: all 0.15s;
 }
-button:hover{
-	color:rgb(180, 180, 180);
+
+button:hover {
+	color: rgb(180, 180, 180);
 	border-color: rgb(180, 180, 180);
 }
 
@@ -36,16 +37,16 @@ button:hover{
 	align-items: center;
 }
 
-.settings_bar > label > input[type="checkbox"] {
-	margin: .5rem;
-	padding: .5rem;
+.settings_bar > label > input[type='checkbox'] {
+	margin: 0.5rem;
+	padding: 0.5rem;
 }
 
 .ambossContent {
-	margin: .5rem;
+	margin: 0.5rem;
 	padding: 0.5rem;
 	background-color: white;
-	box-shadow: rgba(61, 74, 84, 0.1) 0px 3px 8px 0px, rgba(61, 74, 84, 0.06) 0px 3px 12px 0px;
+	box-shadow: rgba(61, 74, 84, 0.1) 0 3px 8px 0, rgba(61, 74, 84, 0.06) 0 3px 12px 0;
 	border-radius: 0.3rem;
 }
 
@@ -60,11 +61,12 @@ button:hover{
 	cursor: pointer;
 	transition: all 0.15s;
 }
+
 .ambossHeader:hover {
 	padding-left: 0.4rem;
 }
 
-.ambossSnippetTitle{
+.ambossSnippetTitle {
 	font-style: normal;
 	font-weight: bold;
 	font-size: 16px;
@@ -73,7 +75,8 @@ button:hover{
 	letter-spacing: 0.2px;
 	color: #303438;
 }
-.ambossSnippetEtymology{
+
+.ambossSnippetEtymology {
 	font-style: italic;
 	font-weight: normal;
 	font-size: 16px;
@@ -82,14 +85,15 @@ button:hover{
 	letter-spacing: 0.2px;
 	color: #303438;
 }
-.ambossSnippetDescription{
+
+.ambossSnippetDescription {
 	margin-top: 10px;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 13.7px;
 	line-height: 24px;
 	letter-spacing: 0.195714px;
-	color: #51616D;
+	color: #51616d;
 }
 
 .ambossFooter {
@@ -123,6 +127,7 @@ button:hover{
 	min-width: 56px;
 	border-right: 1px solid rgb(238, 242, 245);
 }
+
 .icon_container > svg {
 	color: rgb(153, 167, 179);
 	width: 30px;
@@ -143,7 +148,7 @@ button:hover{
 	word-break: break-word;
 	line-height: 24px;
 	font-weight: 400;
-	margin: 0px;
+	margin: 0;
 }
 
 .arrow_container {
@@ -158,25 +163,121 @@ button:hover{
 }
 
 .popover {
-	box-shadow: 0px 3px 8px rgba(61, 74, 84, 0.1), 0px 3px 12px rgba(61, 74, 84, 0.06);
+	box-shadow: 0 3px 8px rgba(61, 74, 84, 0.1), 0 3px 12px rgba(61, 74, 84, 0.06);
 	border-radius: 8px;
-	opacity: 1.0 !important;
+	opacity: 1 !important;
 	max-width: 470px !important;
-
 }
+
 .popover-inner {
 	background-color: white !important;
-	/*!important is not necessary if you place custom.css at the end of your css calls. For the purpose of this demo, it seems to be required in SO snippet*/
+	/* !important is not necessary if you place custom.css at the end of your css calls. For the purpose of this demo, it seems to be required in SO snippet */
 	color: #fff;
 	text-align: left;
-	opacity: 1.0 !important;
+	opacity: 1 !important;
 }
+
 .iconBook {
 	width: 18px;
 	height: 22px;
 	margin-right: 20px;
 }
+
 .iconAmbossLogo {
 	width: 20px;
 	height: 20px;
+}
+
+
+/* .loadingWrapper { */
+/*	color: rgb(26, 28, 28); */
+/*	font-size: 16px; */
+/*	line-height: 24px; */
+/*	font-weight: 400; */
+/*	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif; */
+/*	font-feature-settings: "lnum", "pnum", "kern", "liga", "clig"; */
+/*	-webkit-font-smoothing: antialiased; */
+/*	box-sizing: border-box !important; */
+/*	display: flex; */
+/*	justify-content: space-around; */
+/* } */
+
+/* .loadingWrapper > svg { */
+/*	color: rgb(26, 28, 28); */
+/*	font-size: 16px; */
+/*	line-height: 24px; */
+/*	font-weight: 400; */
+/*	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif; */
+/*	font-feature-settings: "lnum", "pnum", "kern", "liga", "clig"; */
+/*	-webkit-font-smoothing: antialiased; */
+/*	width: 100px; */
+/*	height: 100px; */
+/*	box-sizing: border-box !important; */
+/*	transform-origin: 50% 65%; */
+/*	overflow: hidden; */
+/* } */
+
+/* .loadingWrapper > svg > polygon { */
+/*	color: rgb(26, 28, 28); */
+/*	font-size: 16px; */
+/*	line-height: 24px; */
+/*	font-weight: 400; */
+/*	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif; */
+/*	font-feature-settings: "lnum", "pnum", "kern", "liga", "clig"; */
+/*	-webkit-font-smoothing: antialiased; */
+/*	fill: transparent; */
+/*	stroke-width: 1; */
+/*	box-sizing: border-box !important; */
+/*	stroke: rgb(13, 191, 143); */
+/*	stroke-dasharray: 17; */
+/*	animation: 2s linear 0s infinite normal none running c3; */
+/* } */
+
+.no-glossary {
+	height: 400px;
+	width: 500px;
+}
+
+.lds-ripple-wrapper {
+	height: 400px;
+	width: 500px;
+	text-align: center;
+	padding-top: 7rem;
+}
+
+.lds-ripple {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+
+.lds-ripple div {
+	position: absolute;
+	border: 4px solid rgb(13, 191, 143);
+	opacity: 1;
+	border-radius: 50%;
+	animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+	animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+	0% {
+		top: 36px;
+		left: 36px;
+		width: 0;
+		height: 0;
+		opacity: 1;
+	}
+
+	100% {
+		top: 0;
+		left: 0;
+		width: 72px;
+		height: 72px;
+		opacity: 0;
+	}
 }

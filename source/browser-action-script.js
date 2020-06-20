@@ -1,121 +1,126 @@
-import { h, render } from 'preact'
-import htm from 'htm'
-import { useEffect, useState } from 'preact/hooks'
-import get from 'lodash.get'
-import optionsStorage from './options-storage'
-import { sendMessageToContentScript } from './messaging'
-import { BASE_URL } from './config'
-import { track } from './trackingHelpers'
+import {h, render} from 'preact';
+import htm from 'htm';
+import {useEffect, useState} from 'preact/hooks';
+import optionsStorage from './options-storage';
+import {sendMessageToContentScript} from './messaging';
+import {BASE_URL} from './config';
+import {track} from './tracking-helpers';
 
-const html = htm.bind(h)
+const html = htm.bind(h);
 
 const BrowserAction = () => {
-	const [hostname, setHostname] = useState('')
-	const [isBlacklisted, setIsBlacklisted] = useState(false)
-	const [isShowGlossary, setIsShowGlossary] = useState(true)
-	// const [isShowTooltips, setIsShowTooltips] = useState(true)
-	const [language, setLanguage] = useState("en")
-	const [terms, setTerms] = useState([])
+	const [hostname, setHostname] = useState('');
+	const [isBlacklisted, setIsBlacklisted] = useState(false);
+	const [isShowGlossary, setIsShowGlossary] = useState(true);
+	const [language, setLanguage] = useState('en');
+	const [terms, setTerms] = useState([]);
 
-	useEffect(() => sendMessageToContentScript({ subject: 'getHostnameAndLanguageGuess' }, 0).then(res => {
-		setHostname(res.hostname)
-	}), [])
-
-	useEffect(() => {
-		if (!terms.length) sendMessageToContentScript({ subject: 'getSnippetsMatchingText' }, 0).then(setTerms)
-	}, [])
-
-	// useEffect(() => {
-	// 	if (isShowTooltips) sendMessageToContentScript({ subject: 'activateTooltips' }, 0).then(setTerms)
-	// }, [])
-
-	useEffect(() => {
-		if (hostname) track('browser_addon_browser_action_opened')
-	}, [hostname])
+	useEffect(() => sendMessageToContentScript({subject: 'getHostname'}).then(res => {
+		setHostname(res.hostname);
+	}), []);
 
 	useEffect(() => {
 		const getStorageData = async () => {
-			const { blacklistedSites, lang } = await optionsStorage.getAll()
-			setIsBlacklisted(blacklistedSites.some(i => i === hostname))
-			setLanguage(lang)
+			const {blacklistedSites, lang} = await optionsStorage.getAll();
+			setIsBlacklisted(blacklistedSites.some(i => i === hostname));
+			setLanguage(lang);
+		};
+
+		if (hostname) {
+			getStorageData();
 		}
-		if (hostname) getStorageData()
-	}, [hostname])
+	}, [hostname]);
+
+	useEffect(() => {
+		if (!terms.length) {
+			sendMessageToContentScript({subject: 'getSnippetsMatchingText', language}).then(setTerms);
+		}
+	}, [language]);
+
+	useEffect(() => {
+		if (hostname) {
+			track('browser_addon_browser_action_opened');
+		}
+	}, [hostname]);
 
 	const onIsBlacklistedClick = async e => {
-		setIsBlacklisted(e.target.checked)
+		setIsBlacklisted(e.target.checked);
 
-		const { blacklistedSites } = await optionsStorage.getAll()
+		const {blacklistedSites} = await optionsStorage.getAll();
 
 		if (e.target.checked) {
-			setTerms([])
-			setIsShowGlossary(false)
+			setTerms([]);
+			setIsShowGlossary(false);
 		} else if (!e.target.checked && !terms.length) {
-			sendMessageToContentScript({ subject: 'getSnippetsMatchingText', language }, 0).then(setTerms)
+			sendMessageToContentScript({subject: 'getSnippetsMatchingText', language}, 0).then(setTerms);
 		}
 
-		await optionsStorage.set({ blacklistedSites: e.target.checked
-				? [...blacklistedSites, hostname]
-				: [...new Set(blacklistedSites.filter(i => i !== hostname))] })
+		await optionsStorage.set({blacklistedSites: e.target.checked ?
+			[...blacklistedSites, hostname] :
+			[...new Set(blacklistedSites.filter(i => i !== hostname))]});
 
-		track(`browser_addon_browser_action_blacklist_${e.target.checked ? 'on' : 'off'}`)
-	}
+		track(`browser_addon_browser_action_blacklist_${e.target.checked ? 'on' : 'off'}`);
+	};
 
 	const onIsShowGlossary = () => {
-		setIsShowGlossary(!isShowGlossary)
-		if(isShowGlossary && !terms.length) sendMessageToContentScript({ subject: 'getSnippetsMatchingText', language }, 0).then(setTerms)
-		track(`browser_addon_browser_action_glossary_${isShowGlossary ? 'on' : 'off'}`)
-	}
+		setIsShowGlossary(!isShowGlossary);
+		if (isShowGlossary && !terms.length) {
+			sendMessageToContentScript({subject: 'getSnippetsMatchingText', language}, 0).then(setTerms);
+		}
 
-	// const onIsShowTooltips = () => {
-	// 	setIsShowTooltips(!isShowTooltips)
-	// 	if(isShowTooltips) sendMessageToContentScript({ subject: 'activateTooltips', language }, 0)
-	// 	track(`browser_addon_browser_action_tooltips_${isShowTooltips ? 'on' : 'off'}`)
-	// }
+		track(`browser_addon_browser_action_glossary_${isShowGlossary ? 'on' : 'off'}`);
+	};
 
-				// <label for="isShowTooltips">
-				// 	<input type="checkbox" id="isShowTooltips" disabled=${isBlacklisted} checked=${isShowTooltips} onClick=${onIsShowTooltips}/>
-				// 	show tooltips
-				// </label>
 	return html`<div class="app">
 			<div className="settings_bar">
 				<label for="isBlacklisted">
 					<input type="checkbox" id="isBlacklisted" checked=${isBlacklisted} onClick=${onIsBlacklistedClick}/>
-					blacklist ${hostname}
+					${browser.i18n.getMessage("blacklistSite", hostname)}
 				</label>
 				<label for="isShowGlossary">
 					<input type="checkbox" id="isShowGlossary" disabled=${isBlacklisted} checked=${isShowGlossary} onClick=${onIsShowGlossary}/>
-					show glossary
+					${browser.i18n.getMessage("showGlossary")}
 				</label>
 			</div>
-				${isShowGlossary && !isBlacklisted && terms && terms.length > 0 && terms.map(term => html`<${Term} ...${term} language=${language} />`)}
-		</div>`
-}
+			${!isShowGlossary && html`<div class="no-glossary"></div>`}
+			${isShowGlossary && !isBlacklisted && terms && terms.length === 0 && html`<div class="lds-ripple-wrapper"><div class="lds-ripple"><div></div><div></div></div></div>`}
+			${isShowGlossary && !isBlacklisted && terms && terms.length > 0 && terms.map(term => html`<${Term} ...${term} language=${language} />`)}
+		</div>`;
+};
 
-function Term({title, etymology, description, id, destinations, language}){
-	const [ isOpen, setIsOpen ] = useState(false)
-	const { anchor, label, lc_xid } = get(destinations, `[0]`, {})
+// Function Loading() {
+// 	return html`<div class="loadingWrapper">
+// 		<svg id="triangle" width="100" height="100" viewBox="-3 -4 39 39" data-testid="loading-svg">
+// 			<polygon fill="transparent" stroke-width="1" points="16,0 32,32 0,32" class="inner-1999797553">
+// 			</polygon>
+// 		</svg>
+// 	</div>`
+// }
 
-	// const anchorString = anchor ? `&anker=${anchor}` : ''
+function Term({title, etymology, description, id, destinations, language}) {
+	const [isOpen, setIsOpen] = useState(false);
+	const {anchor, label, lc_xid} = Array.isArray(destinations) && destinations[0] || {}
+
+	// Const anchorString = anchor ? `&anker=${anchor}` : ''
 	// https://next.amboss.com/us/4N03Yg&anker=Zefeb92d093a9fbf8b7c983722bdbb10d&utm_source=chrome_plugin&utm_medium=browser_plugin&utm_campaign=browser_plugin&utm_term=FAST
 	// const href = `${BASE_URL}${language === 'en' ? 'us' : 'de'}/${lc_xid}${anchorString}&utm_source=${BROWSER_NAME}_plugin&utm_medium=browser_plugin&utm_campaign=browser_plugin&utm_term=${title}`
 
 	// https://next.amboss.com/us/article/4N03Yg#Zefeb92d093a9fbf8b7c983722bdbb10d
-	const href = `${BASE_URL}${language === 'en' ? 'us' : 'de'}/article/${lc_xid}#${anchor}`
+	const href = `${BASE_URL}${language === 'en' ? 'us' : 'de'}/article/${lc_xid}#${anchor}`;
 
 	const handleHeaderClick = () => {
-		track(`browser_addon_${isOpen ? "closed" : "opened"}_content`, {href, title})
-		setIsOpen(!isOpen)
-	}
+		track(`browser_addon_${isOpen ? 'closed' : 'opened'}_content`, {href, title});
+		setIsOpen(!isOpen);
+	};
 
-	const handleLinkClick = () => track(`browser_addon_content_link_clicked`, {href, title})
+	const handleLinkClick = () => track('browser_addon_content_link_clicked', {href, title});
 
 	return html`<div key=${id} class="ambossContent">
 			<div class="ambossHeader" onClick=${handleHeaderClick}>${title}</div>
 			${isOpen && html`<div>
-				${!!etymology && html`<div class="ambossSnippetEtymology">${etymology}</div>`}
+				${Boolean(etymology) && html`<div class="ambossSnippetEtymology">${etymology}</div>`}
 				<div class="ambossSnippetDescription">${description}</div>
-				${!!lc_xid && html`<div id="ambossFooter" class="ambossFooter" onClick=${handleLinkClick}>
+				${Boolean(lc_xid) && html`<div id="ambossFooter" class="ambossFooter" onClick=${handleLinkClick}>
 					<a href=${href} target="_blank">
 						<div class="icon_container">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -137,7 +142,7 @@ function Term({title, etymology, description, id, destinations, language}){
 					</a>
 				</div>`}
 			</div>`}
-		</div>`
+		</div>`;
 }
 
 render(html`<${BrowserAction} />`, document.body);

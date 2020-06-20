@@ -23,12 +23,12 @@ html {
 form {
 	display: flex;
 	flex-direction: column;
-	margin:	5%;
+	margin: 5%;
 }
 
-.options_language_container > label > input[type="radio"] {
-	margin: .5rem;
-	padding: .5rem;
+.options_language_container > label > input[type='radio'] {
+	margin: 0.5rem;
+	padding: 0.5rem;
 }
 
 .options_blacklist_container > ul {
@@ -36,15 +36,15 @@ form {
 	margin-left: -2rem;
 }
 
-.options_blacklist_container > input[type="text"] {
-	margin: .5rem;
-	padding: .5rem;
+.options_blacklist_container > input[type='text'] {
+	margin: 0.5rem;
+	padding: 0.5rem;
 	width: 300px;
 }
 
 .options_blacklist_container > button {
-	margin: .5rem;
-	padding: .5rem;
+	margin: 0.5rem;
+	padding: 0.5rem;
 }
 
 .trash_icon {
@@ -54,8 +54,8 @@ form {
 	padding-bottom: 0.3rem;
 }
 
-form > button[type="submit"] {
+form > button[type='submit'] {
 	margin: 1rem;
-	padding: .5rem;
+	padding: 0.5rem;
 }
 

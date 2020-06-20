@@ -7,10 +7,10 @@ module.exports = {
 	devtool: 'source-map',
 	stats: 'errors-only',
 	entry: {
-		"background-script": './source/background-script',
-		"options-ui-script": './source/options-ui-script',
-		"browser-action-script": './source/browser-action-script',
-		"content-script": './source/content-script'
+		'background-script': './source/background-script',
+		'options-ui-script': './source/options-ui-script',
+		'browser-action-script': './source/browser-action-script',
+		'content-script': './source/content-script'
 	},
 	output: {
 		path: path.join(__dirname, 'distribution'),
@@ -27,10 +27,10 @@ module.exports = {
 				test: /\.(png)$/i,
 				use: [
 					{
-						loader: 'file-loader',
-					},
-				],
-			},
+						loader: 'file-loader'
+					}
+				]
+			}
 		]
 	},
 	plugins: [

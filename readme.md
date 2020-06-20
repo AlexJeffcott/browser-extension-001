@@ -12,7 +12,7 @@
 
 > Barebones boilerplate with webpack, options handler and auto-publishing.
 
-![Sample extension output](media/previewer.png)
+![Sample extension output](source/media/previewer.png)
 
 ## Features
 

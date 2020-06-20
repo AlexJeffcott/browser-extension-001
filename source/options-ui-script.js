@@ -1,59 +1,60 @@
-import { h, render } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
-import htm from 'htm'
-import optionsStorage from './options-storage'
-import TrashIconRed from '../media/trash_icon_red.png'
+import {h, render} from 'preact';
+import {useState, useEffect} from 'preact/hooks';
+import htm from 'htm';
+import optionsStorage from './options-storage';
+import TrashIconRed from './media/trash_icon_red.png';
 
-const html = htm.bind(h)
+const html = htm.bind(h);
 
 const trackIt = async trackingLabel => {
-	const storageData = await optionsStorage.getAll()
-	console.log(trackingLabel, storageData)
-}
+	const storageData = await optionsStorage.getAll();
+	console.log(trackingLabel, storageData);
+};
 
 const OptionsUi = () => {
-	const [language, setLanguage] = useState('')
-	const [blacklistedSites, setBlacklistedSites] = useState()
-	const [blacklistInput, setBlacklistInput] = useState('')
+	const [language, setLanguage] = useState('');
+	const [blacklistedSites, setBlacklistedSites] = useState();
+	const [blacklistInput, setBlacklistInput] = useState('');
 
 	useEffect(() => {
 		const getStorageData = async () => {
-			const storageData = await optionsStorage.getAll()
-			setBlacklistedSites(storageData.blacklistedSites)
-			setLanguage(storageData.lang)
-		}
-		getStorageData()
-	}, [])
+			const storageData = await optionsStorage.getAll();
+			setBlacklistedSites(storageData.blacklistedSites);
+			setLanguage(storageData.lang);
+		};
 
-	useEffect(() => trackIt('options page loaded'), [])
+		getStorageData();
+	}, []);
+
+	useEffect(() => trackIt('options page loaded'), []);
 
 	const onBlacklistInputChange = e => {
-		setBlacklistInput(e.target.value)
-	}
+		setBlacklistInput(e.target.value);
+	};
 
 	const removeBlacklistSite = site => {
-		setBlacklistedSites(blacklistedSites.filter(i => i !== site))
-	}
+		setBlacklistedSites(blacklistedSites.filter(i => i !== site));
+	};
 
 	const addBlacklistSite = () => {
 		if (blacklistedSites.find(i => i === blacklistInput)) {
-			console.log(`${blacklistInput} is already blacklisted`)
-			return
+			console.log(`${blacklistInput} is already blacklisted`);
+			return;
 		}
-		setBlacklistInput('')
-		setBlacklistedSites([...blacklistedSites, blacklistInput])
-	}
+
+		setBlacklistInput('');
+		setBlacklistedSites([...blacklistedSites, blacklistInput]);
+	};
 
 	const onLanguageRadioChange = e => {
-		trackIt(`clicked ${e.target.value} language radio button on options page`)
-		setLanguage(e.target.value)
-	}
+		trackIt(`clicked ${e.target.value} language radio button on options page`);
+		setLanguage(e.target.value);
+	};
 
 	const onSubmit = e => {
-		e.preventDefault()
-		optionsStorage.set({ blacklistedSites, lang: language })
-	}
-
+		e.preventDefault();
+		optionsStorage.set({blacklistedSites, lang: language});
+	};
 
 	return language && blacklistedSites && html`
 		<form onSubmit=${onSubmit}>
@@ -68,7 +69,7 @@ const OptionsUi = () => {
 						checked=${language === 'auto'}
 						onClick=${onLanguageRadioChange}
 				/>
-					Auto
+					${browser.i18n.getMessage("languageChoiceAuto")}
 				</label>
 				<label for="lang_en">
 					<input
@@ -79,7 +80,7 @@ const OptionsUi = () => {
 						checked=${language === 'en'}
 						onClick=${onLanguageRadioChange}
 					/>
-					English
+					${browser.i18n.getMessage("languageChoiceEn")}
 				</label>
 				<label for="lang_de">
 					<input
@@ -90,14 +91,14 @@ const OptionsUi = () => {
 						checked=${language === 'de'}
 						onClick=${onLanguageRadioChange}
 					/>
-					Deutsch
+					${browser.i18n.getMessage("languageChoiceDe")}
 				</label>
 			</div>
 			<div class="options_blacklist_container">
-				<h3>Blacklisted Sites</h3>
+				<h3>${browser.i18n.getMessage("blacklistedSitesTitle")}</h3>
 				<ul>
 					${!blacklistedSites.length && html`<li>There are no blacklisted sites</li>`}
-					${!!blacklistedSites.length && blacklistedSites.map(site => html`
+					${Boolean(blacklistedSites.length) && blacklistedSites.map(site => html`
 						<li>
 							${site}
 							<img src=${TrashIconRed} alt="Trash Can" className="trash_icon" onClick=${() => removeBlacklistSite(site)} />
@@ -107,9 +108,9 @@ const OptionsUi = () => {
 				<input type="text" value=${blacklistInput} onChange=${onBlacklistInputChange} />
 				<button onClick=${addBlacklistSite}>+</button>
 			</div>
-			<button type="submit">SAVE</button>
+			<button type="submit">${browser.i18n.getMessage("submitOptionsButton")}</button>
 		</form>
-	`
-}
+	`;
+};
 
-render(html`<${OptionsUi} />`, document.body)
+render(html`<${OptionsUi} />`, document.body);

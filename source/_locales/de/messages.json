@@ -1,0 +1,51 @@
+{
+  "extensionName": {
+	"message": "AMBOSS",
+	"description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+	"message": "AMBOSSIFY Sie die medizinischen Begriffe auf einer Website.",
+	"description": "Description of the extension."
+  },
+
+  "browserActionDefaultTitle": {
+	"message": "AMBOSS",
+	"description": "The popup tooltip text that you see when you hover the extension button in the toolbar of the browser"
+  },
+
+  "languageChoiceEn": {
+	"message": "English",
+	"description": "Text for radio button choice label"
+  },
+
+  "languageChoiceDe": {
+	"message": "Deutsch",
+	"description": "Text for radio button choice label"
+  },
+
+  "languageChoiceAuto": {
+	"message": "auto",
+	"description": "Text for radio button choice label"
+  },
+
+  "blacklistSite": {
+	"message": "Deaktivieren $1",
+	"description": "Text for checkbox choice label"
+  },
+
+  "showGlossary": {
+	"message": "Glossar anzeigen",
+	"description": "Text for checkbox choice label"
+  },
+
+  "blacklistedSitesTitle": {
+	"message": "Deaktivierte Sites",
+	"description": "Title for the blacklisted sites area of the options page"
+  },
+
+  "submitOptionsButton": {
+	"message": "SPEICHERN",
+	"description": "Text for the submit button on the options page"
+  }
+}

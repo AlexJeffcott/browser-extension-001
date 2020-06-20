@@ -1,26 +1,37 @@
-import { INSTALL_URL, UNINSTALL_URL } from './config'
-import { track } from './trackingHelpers'
+import {INSTALL_URL, UNINSTALL_URL} from './config';
+import {track} from './tracking-helpers';
 
-browser.runtime.setUninstallURL(UNINSTALL_URL)
+browser.runtime.setUninstallURL(UNINSTALL_URL);
 
-browser.runtime.onInstalled.addListener(({ reason, previousVersion }) => {
+browser.runtime.onInstalled.addListener(({reason, previousVersion}) => {
 	switch (reason) {
 		case 'install':
-			track(`browser_addon_new_installation`, { previousVersion })
-			browser.tabs.update({ url: INSTALL_URL })
+			track('browser_addon_new_installation', {previousVersion});
+			browser.tabs.update({url: INSTALL_URL});
 			break;
 		case 'update':
-			track(`browser_addon_updated`, { previousVersion })
+			track('browser_addon_updated', {previousVersion});
 			break;
 		case 'chrome_update':
 		case 'shared_module_update':
 		default:
-			track(`browser_addon_unspecified_install_event`, { previousVersion })
+			track('browser_addon_unspecified_install_event', {previousVersion});
 			break;
 	}
-})
+});
 
-// browser.tabs.executeScript({
+browser.runtime.onMessage.addListener(async message => {
+	switch (message.subject) {
+		case 'track': {
+			return track(...message.trackingProperties);
+		}
+
+		default:
+			throw new Error('Message requires message.subject');
+	}
+});
+
+// Browser.tabs.executeScript({
 // 	code: 'document.body.style.backgroundColor="orange"'
 // }).then(onExecuted, onError);
 //
@@ -78,5 +89,4 @@ browser.runtime.onInstalled.addListener(({ reason, previousVersion }) => {
 // 	console.log(`!!`, res)
 // 	track()
 // });
-
 
