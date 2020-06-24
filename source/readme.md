@@ -24,8 +24,12 @@ This is the url of the segment (analytics dashboard)
 0. add AMBOSS loading spinner
 0. add feedback form
 0. direct users to hubspot form on uninstall
+0. publish to firefox and edge
 0. find a better (less network intensive) way to update content without the user updating the extension
-0. add browser-action badges for updating and the number of items found (for the glossary)
+0. add browser-action badges for pushing new updates, and the number of items found (for the glossary)
 0. add term feedback mechanism (dismiss if not interested?)
 0. add blacklisted terms mechanism
 0. add create custom question session based on terms in this page button
+0. implement segment Typewriter
+0. extend the test.html to include edge cases etc to ease testing
+0. create Cypress tests against the above
