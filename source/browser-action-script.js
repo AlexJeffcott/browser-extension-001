@@ -97,24 +97,12 @@ const BrowserAction = () => {
 		</div>`;
 };
 
-// Function Loading() {
-// 	return html`<div class="loadingWrapper">
-// 		<svg id="triangle" width="100" height="100" viewBox="-3 -4 39 39" data-testid="loading-svg">
-// 			<polygon fill="transparent" stroke-width="1" points="16,0 32,32 0,32" class="inner-1999797553">
-// 			</polygon>
-// 		</svg>
-// 	</div>`
-// }
-
 function Term({title, etymology, description, id, destinations, language}) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isClicked, setIsClicked] = useState(false);
 	const {anchor, label, lc_xid} = Array.isArray(destinations) && destinations[0] || {}
 
-	// Const anchorString = anchor ? `&anker=${anchor}` : ''
-	// https://next.amboss.com/us/4N03Yg&anker=Zefeb92d093a9fbf8b7c983722bdbb10d&utm_source=chrome_plugin&utm_medium=browser_plugin&utm_campaign=browser_plugin&utm_term=FAST
-	// const href = `${BASE_URL}${language === 'en' ? 'us' : 'de'}/${lc_xid}${anchorString}&utm_source=${BROWSER_NAME}_plugin&utm_medium=browser_plugin&utm_campaign=browser_plugin&utm_term=${title}`
-
+	// href contains a string similar to the below example
 	// https://next.amboss.com/us/article/4N03Yg#Zefeb92d093a9fbf8b7c983722bdbb10d
 	const href = `${BASE_URL}${language === 'en' ? 'us' : 'de'}/article/${lc_xid}#${anchor}`;
 

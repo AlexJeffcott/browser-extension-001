@@ -2,7 +2,7 @@ import {SEGMENT_WRITE_KEY} from './config';
 import optionsStorage from './options-storage';
 import {sendMessageToContentScript} from './messaging';
 
-// The following IFFE snippet was taken from the following:
+// The following IIFE snippet was taken from the following:
 // https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/
 // I had to define 'SEGMENT_WRITE_KEY' with the segment project’s Write Key, found in the project settings.
 !(function () {

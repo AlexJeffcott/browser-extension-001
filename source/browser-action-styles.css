@@ -173,51 +173,6 @@ button:hover {
 	height: 20px;
 }
 
-
-/* .loadingWrapper { */
-/*	color: rgb(26, 28, 28); */
-/*	font-size: 16px; */
-/*	line-height: 24px; */
-/*	font-weight: 400; */
-/*	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif; */
-/*	font-feature-settings: "lnum", "pnum", "kern", "liga", "clig"; */
-/*	-webkit-font-smoothing: antialiased; */
-/*	box-sizing: border-box !important; */
-/*	display: flex; */
-/*	justify-content: space-around; */
-/* } */
-
-/* .loadingWrapper > svg { */
-/*	color: rgb(26, 28, 28); */
-/*	font-size: 16px; */
-/*	line-height: 24px; */
-/*	font-weight: 400; */
-/*	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif; */
-/*	font-feature-settings: "lnum", "pnum", "kern", "liga", "clig"; */
-/*	-webkit-font-smoothing: antialiased; */
-/*	width: 100px; */
-/*	height: 100px; */
-/*	box-sizing: border-box !important; */
-/*	transform-origin: 50% 65%; */
-/*	overflow: hidden; */
-/* } */
-
-/* .loadingWrapper > svg > polygon { */
-/*	color: rgb(26, 28, 28); */
-/*	font-size: 16px; */
-/*	line-height: 24px; */
-/*	font-weight: 400; */
-/*	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif; */
-/*	font-feature-settings: "lnum", "pnum", "kern", "liga", "clig"; */
-/*	-webkit-font-smoothing: antialiased; */
-/*	fill: transparent; */
-/*	stroke-width: 1; */
-/*	box-sizing: border-box !important; */
-/*	stroke: rgb(13, 191, 143); */
-/*	stroke-dasharray: 17; */
-/*	animation: 2s linear 0s infinite normal none running c3; */
-/* } */
-
 .no-glossary {
 	height: 400px;
 	width: 500px;
