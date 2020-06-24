@@ -30,11 +30,11 @@ export async function getData(lang) {
 
 	if (wasModifedSinceLastFetch) {
 		const snippets = await getSnippets(lang);
-		const snippetsWithDestinations = snippets.filter(i => i.destinations.length);
-		const snippetsWithDestinationsSorted = snippetsWithDestinations.sort((a, b) => a.title < b.title ? -1 : 1);
+		const snippetsWithDescriptionsAndDestinations = snippets.filter(i => i.description && i.destinations.length);
+		const snippetsWithDescriptionsAndDestinationsSorted = snippetsWithDescriptionsAndDestinations.sort((a, b) => a.title < b.title ? -1 : 1);
 
 		optionsStorage.set({snippetLastFetched: {...snippetLastFetched, [lang]: Date.now()}});
-		return snippetsWithDestinationsSorted;
+		return snippetsWithDescriptionsAndDestinationsSorted;
 	}
 
 	return lang === 'en' ? snippetsEN : snippetsDE;

@@ -9,9 +9,11 @@
 
 /* the popover itself */
 .ambossContent {
-	font-family: Lato;
+	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif;
+	font-feature-settings: "lnum", "pnum", "kern", "liga", "clig";
+	-webkit-font-smoothing: antialiased;
 	font-style: normal;
-	font-weight: bold;
+	font-weight: 400;
 	color: #303438;
 	padding: 1.5rem;
 	background-color: white;
@@ -19,22 +21,16 @@
 	border-radius: 0.3rem;
 }
 
-.ambossHeader {
-	font-size: 16px;
-	line-height: 24px;
-	letter-spacing: 0.2px;
-	padding-bottom: 0.5rem;
-}
-
-.iconAmbossLogo {
-	width: 20px;
-	height: 20px;
+.ambossTooltipLogo{
+	padding-bottom: 1rem;
 }
 
 .ambossSnippetTitle {
 	font-size: 16px;
+	font-weight: 700;
 	line-height: 24px;
 	letter-spacing: 0.2px;
+	color: rgb(54, 65, 73);
 }
 
 .ambossSnippetEtymology {
@@ -46,7 +42,7 @@
 }
 
 .ambossSnippetDescription {
-	margin-top: 10px;
+	margin-bottom: 1rem;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 13.7px;
@@ -94,6 +90,7 @@
 
 .link_arrow_container {
 	display: flex;
+	align-items: center;
 	align-content: center;
 	width: 90%;
 	padding-left: 5%;

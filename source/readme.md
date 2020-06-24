@@ -20,6 +20,31 @@ This is the documentation for events
 - the content (see above) should be updated with EVERY version
 - ensure that babel is building for the minimum versions defined in the manifest
 
+
+## To download and clean content
+```javascript
+const fetch = require(`node-fetch`)
+   const fs = require(`fs`)
+
+   fetch('https://storage.googleapis.com/amboss-browser-plugin/snippets_de.json')
+     .then(result => result.json())
+     .then(async (data) => {
+       const normalisedData = await data.filter(i => i.description && i.destinations.length).sort((a, b) => a.title < b.title ? -1 : 1);
+       fs.writeFile(
+         `./snippets_de.json`,
+         JSON.stringify(normalisedData),
+         err =>
+           err
+             ? console.error(
+                 `Error writing snippets_de`,
+                 err
+               )
+             : console.log(
+                 `snippets_de successfully saved!`
+               )
+       )
+     })
+```
 ## TODO
 0. add icons
 0. add screenshots
