@@ -11,12 +11,14 @@ NB Please remember to update the snippetsLastFetched property in the default val
 ## Analytics
 This is the url of the segment (analytics dashboard)
 ```https://app.segment.com/amboss-staging/sources/amboss_browser_extension/schema/events```
-
+This is the documentation for events
+```https://www.notion.so/amboss1/Browser-Extension-c995a9d35da945f09f5dd49dcf9806ce```
 
 ## Maintainence
 - browser-polyfill.min.js should be updated periodically
 - the segment IIFE in tracking-helpers.js should be updated periodically
 - the content (see above) should be updated with EVERY version
+- ensure that babel is building for the minimum versions defined in the manifest
 
 ## TODO
 0. add icons
@@ -24,6 +26,8 @@ This is the url of the segment (analytics dashboard)
 0. add AMBOSS loading spinner
 0. add feedback form
 0. direct users to hubspot form on uninstall
+0. use indicative.com
+0. further optimise build
 0. publish to firefox and edge
 0. find a better (less network intensive) way to update content without the user updating the extension
 0. add browser-action badges for pushing new updates, and the number of items found (for the glossary)
