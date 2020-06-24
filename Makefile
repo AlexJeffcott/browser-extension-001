@@ -4,4 +4,10 @@ getLatestENSnippets:
 getLatestDESnippets:
 	curl 'https://storage.googleapis.com/amboss-browser-plugin/snippets_de.json' -o ./source/snippets_de.json
 
-.PHONY: getLatestENSnippets getLatestDESnippets
+getLatestNormalisedDESnippets:
+	node downloadSaveFile.js --lang=de
+
+getLatestNormalisedENSnippets:
+	node downloadSaveFile.js --lang=en
+
+.PHONY: getLatestENSnippets getLatestDESnippets getLatestNormalisedDESnippets getLatestNormalisedENSnippets
