@@ -2,9 +2,18 @@ import {h, render} from 'preact';
 import htm from 'htm';
 import {useEffect, useState} from 'preact/hooks';
 import optionsStorage from './options-storage';
-import {sendMessageToContentScript} from './messaging';
+import { sendMessageToContentScript } from './messaging'
 import {BASE_URL} from './config';
 import {track} from './tracking-helpers';
+import {
+	glossary_link_clicked,
+	action_opened,
+	action_closed,
+	blacklist_toggled_on,
+	blacklist_toggled_off,
+	glossary_toggled_on,
+	glossary_toggled_off,
+} from './event-names'
 
 const html = htm.bind(h);
 
@@ -33,13 +42,13 @@ const BrowserAction = () => {
 
 	useEffect(() => {
 		if (!terms.length) {
-			sendMessageToContentScript({subject: 'getSnippetsMatchingText', language}).then(setTerms);
-		}
+			sendMessageToContentScript({subject: 'getSnippetsMatchingText'}).then(setTerms)
+			}
 	}, [language]);
 
 	useEffect(() => {
 		if (hostname) {
-			track('browser_addon_browser_action_opened');
+			track(action_opened);
 		}
 	}, [hostname]);
 
@@ -59,7 +68,7 @@ const BrowserAction = () => {
 			[...blacklistedSites, hostname] :
 			[...new Set(blacklistedSites.filter(i => i !== hostname))]});
 
-		track(`browser_addon_browser_action_blacklist_${e.target.checked ? 'on' : 'off'}`);
+		track(e.target.checked ? blacklist_toggled_on : blacklist_toggled_off);
 	};
 
 	const onIsShowGlossary = () => {
@@ -68,7 +77,7 @@ const BrowserAction = () => {
 			sendMessageToContentScript({subject: 'getSnippetsMatchingText', language}, 0).then(setTerms);
 		}
 
-		track(`browser_addon_browser_action_glossary_${isShowGlossary ? 'on' : 'off'}`);
+		track(isShowGlossary ? glossary_toggled_on : glossary_toggled_off);
 	};
 
 	return html`<div class="app">
@@ -99,6 +108,7 @@ const BrowserAction = () => {
 
 function Term({title, etymology, description, id, destinations, language}) {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isClicked, setIsClicked] = useState(false);
 	const {anchor, label, lc_xid} = Array.isArray(destinations) && destinations[0] || {}
 
 	// Const anchorString = anchor ? `&anker=${anchor}` : ''
@@ -109,19 +119,40 @@ function Term({title, etymology, description, id, destinations, language}) {
 	const href = `${BASE_URL}${language === 'en' ? 'us' : 'de'}/article/${lc_xid}#${anchor}`;
 
 	const handleHeaderClick = () => {
-		track(`browser_addon_${isOpen ? 'closed' : 'opened'}_content`, {href, title});
+		track(isOpen ? action_opened : action_closed, {href, title});
 		setIsOpen(!isOpen);
 	};
 
-	const handleLinkClick = () => track('browser_addon_content_link_clicked', {href, title});
+	const handleLinkClick = event => {
+		if(isClicked) {
+			setIsClicked(false)
+			return;
+		}
+		event.preventDefault()
+		track(glossary_link_clicked, {
+			href,
+			title,
+		})
+		setIsClicked(true)
+
+		const newEvent = new MouseEvent('click', {
+			view: window,
+			bubbles: true,
+			cancelable: true
+		})
+
+		setTimeout(() => {
+			event.target.dispatchEvent(newEvent)
+		}, 1000)
+	}
 
 	return html`<div key=${id} class="ambossContent">
 			<div class="ambossHeader" onClick=${handleHeaderClick}>${title}</div>
 			${isOpen && html`<div>
 				${Boolean(etymology) && html`<div class="ambossSnippetEtymology">${etymology}</div>`}
 				<div class="ambossSnippetDescription">${description}</div>
-				${Boolean(lc_xid) && html`<div id="ambossFooter" class="ambossFooter" onClick=${handleLinkClick}>
-					<a href=${href} target="_blank">
+				${Boolean(lc_xid) && html`<div id="ambossFooter" class="ambossFooter" >
+					<a href=${href} target="_blank" onClick=${handleLinkClick}>
 						<div class="icon_container">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 								<rect x="4" y="2" width="16" height="20"></rect>
@@ -130,7 +161,7 @@ function Term({title, etymology, description, id, destinations, language}) {
 								<rect x="8" y="14" width="8" height="4"></rect>
 							</svg>
 						</div>
-						<div class="link_arrow_container">
+						<div class="link_arrow_container" >
 							<h4>${label}</h4>
 							<div class="arrow_container">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

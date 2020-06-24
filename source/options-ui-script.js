@@ -1,18 +1,15 @@
 import {h, render} from 'preact';
 import {useState, useEffect} from 'preact/hooks';
 import htm from 'htm';
+import {track} from './tracking-helpers';
 import optionsStorage from './options-storage';
 import TrashIconRed from './media/trash_icon_red.png';
+import {options_opened, remove_blacklisted_site_clicked, add_blacklisted_site_clicked, language_choice_clicked} from './event-names'
 
 const html = htm.bind(h);
 
-const trackIt = async trackingLabel => {
-	const storageData = await optionsStorage.getAll();
-	console.log(trackingLabel, storageData);
-};
-
 const OptionsUi = () => {
-	const [language, setLanguage] = useState('');
+	const [language, setLanguage] = useState('auto');
 	const [blacklistedSites, setBlacklistedSites] = useState();
 	const [blacklistInput, setBlacklistInput] = useState('');
 
@@ -26,28 +23,31 @@ const OptionsUi = () => {
 		getStorageData();
 	}, []);
 
-	useEffect(() => trackIt('options page loaded'), []);
+	useEffect(() => track(options_opened), []);
 
 	const onBlacklistInputChange = e => {
 		setBlacklistInput(e.target.value);
 	};
 
 	const removeBlacklistSite = site => {
+		track(remove_blacklisted_site_clicked, {blacklistedSiteNameRemoved: site})
 		setBlacklistedSites(blacklistedSites.filter(i => i !== site));
 	};
 
 	const addBlacklistSite = () => {
 		if (blacklistedSites.find(i => i === blacklistInput)) {
 			console.log(`${blacklistInput} is already blacklisted`);
+			track(add_blacklisted_site_clicked, {blacklistedSiteNameAdded: blacklistInput})
 			return;
 		}
 
+		track(`clicked blacklist add button success for ${blacklistInput}`)
 		setBlacklistInput('');
 		setBlacklistedSites([...blacklistedSites, blacklistInput]);
 	};
 
 	const onLanguageRadioChange = e => {
-		trackIt(`clicked ${e.target.value} language radio button on options page`);
+		track(language_choice_clicked, {previousLanguageChoice: language, newLanguageChoice: e.target.value});
 		setLanguage(e.target.value);
 	};
 

@@ -1,0 +1,20 @@
+	export const blacklist_toggled_on = 'browser_addon_browser_action_blacklist_toggled_on'
+	export const blacklist_toggled_off = 'browser_addon_browser_action_blacklist_toggled_off'
+	export const action_opened = 'browser_addon_browser_action_opened'
+	export const action_closed = 'browser_addon_browser_action_closed'
+	export const glossary_toggled_on = 'browser_addon_browser_action_glossary_toggled_on'
+	export const glossary_toggled_off = 'browser_addon_browser_action_glossary_toggled_off'
+	export const glossary_link_clicked = 'browser_addon_browser_action_glossary_link_clicked'
+
+	export const options_opened = 'browser_addon_options_page_opened'
+	export const remove_blacklisted_site_clicked = 'browser_addon_options_page_remove_blacklisted_site_clicked'
+	export const add_blacklisted_site_clicked = 'browser_addon_options_page_add_blacklisted_site_clicked'
+	export const language_choice_clicked = 'browser_addon_options_page_language_choice_clicked'
+
+	export const new_installation =	'browser_addon_new_installation'
+	export const updated =	'browser_addon_updated'
+	export const unspecified_install_event =	'browser_addon_unspecified_install_event'
+
+	export const tooltip_anchor_hovered =	'browser_addon_tab_tooltip_anchor_hovered'
+	export const tooltip_link_clicked =	'browser_addon_tab_tooltip_link_clicked'
+	export const term_list_calculated =	'browser_addon_tab_term_list_calculated'

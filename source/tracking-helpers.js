@@ -58,10 +58,12 @@ export async function track(title, _detailsObject = {}, _hostname) {
 	const browserName = isFirefoxOrChrome();
 	const storageData = await optionsStorage.getAll();
 	const hostname = _hostname || await sendMessageToContentScript({subject: 'getHostname'});
+	const url = await sendMessageToContentScript({subject: 'getUrl'});
 
 	const detailsObject = {
 		..._detailsObject,
 		hostname,
+		url,
 		browserName,
 		version,
 		storageData

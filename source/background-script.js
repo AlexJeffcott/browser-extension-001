@@ -1,21 +1,22 @@
 import {INSTALL_URL, UNINSTALL_URL} from './config';
 import {track} from './tracking-helpers';
+import {new_installation, updated, unspecified_install_event} from './event-names'
 
 browser.runtime.setUninstallURL(UNINSTALL_URL);
 
 browser.runtime.onInstalled.addListener(({reason, previousVersion}) => {
 	switch (reason) {
 		case 'install':
-			track('browser_addon_new_installation', {previousVersion});
+			track(new_installation, {previousVersion});
 			browser.tabs.update({url: INSTALL_URL});
 			break;
 		case 'update':
-			track('browser_addon_updated', {previousVersion});
+			track(updated, {previousVersion});
 			break;
 		case 'chrome_update':
 		case 'shared_module_update':
 		default:
-			track('browser_addon_unspecified_install_event', {previousVersion});
+			track(unspecified_install_event, {previousVersion});
 			break;
 	}
 });
@@ -31,9 +32,30 @@ browser.runtime.onMessage.addListener(async message => {
 	}
 });
 
-// Browser.tabs.executeScript({
-// 	code: 'document.body.style.backgroundColor="orange"'
-// }).then(onExecuted, onError);
+//	"content_scripts": [
+//	  {
+//		"exclude_globs": [
+//		  "*:*.paypal.*/*",
+//		  "*:*.amboss.*/*",
+//		  "*:*medicuja.*/*",
+//		  "*:*google.*/*",
+//		  "*:*ecosia.*/*",
+//		  "*:duckduckgo.*/*",
+//		  "*:mail.yahoo.com/*",
+//		  "*:*.hotmail.*/*",
+//		  "*:*.outlook.com/*",
+//		  "*:*.icloud.*/*"
+//		],
+//		"matches": ["<all_urls>"],
+//		"css": ["content-script-styles.css"],
+//		"js": ["browser-polyfill.min.js", "content-script.js"]
+//	  }
+//	],
+
+
+
+
+// browser.tabs.executeScript(null, { file: "content_script.js" }).then(onExecuted, onError);
 //
 // function onExecuted(result) {
 // 	console.log(result);
@@ -42,6 +64,14 @@ browser.runtime.onMessage.addListener(async message => {
 // function onError(error) {
 // 	console.log(error);
 // }
+
+
+// chrome.tabs.onUpdated.addListener(function() {
+// 	chrome.tabs.executeScript(null, { file: "jquery.js" }, function() {
+// 		chrome.tabs.executeScript(null, { file: "content_script.js" });
+// 	});
+// });
+
 //
 // const executing = browser.tabs.executeScript({ file: "/content-script.js", allFrames: true });
 // executing.then(onExecuted, onError);
