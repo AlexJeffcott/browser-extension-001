@@ -50,11 +50,11 @@ module.exports = {
 		minimizer: [
 			new TerserPlugin({
 				terserOptions: {
-					mangle: false,
-					compress: false,
+					mangle: true,
+					compress: true,
 					output: {
-						beautify: true,
-						indent_level: 2 // eslint-disable-line camelcase
+						beautify: false,
+						indent_level: 2
 					}
 				}
 			})
