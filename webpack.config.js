@@ -1,7 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const SizePlugin = require('size-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -35,35 +35,36 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 
-		new HtmlWebpackPlugin({
-			title: 'AMBOSS Browser Addon Background',
-			filename: 'background-page.html',
-			template: 'source/tmp.html',
-			chunks: ['background-script'],
-		}),
-
-		new HtmlWebpackPlugin({
-			title: 'AMBOSS Browser Addon Options Page',
-			filename: 'options-ui-page.html',
-			template: 'source/tmp.html',
-			chunks: ['options-ui-script'],
-		}),
-		new HtmlWebpackTagsPlugin({ files: ['options-ui-page.html'], tags: ['options-ui-styles.css'] }),
-
-		new HtmlWebpackPlugin({
-			title: 'AMBOSS Browser Addon Browser Action Page',
-			filename: 'browser-action-page.html',
-			template: 'source/tmp.html',
-			chunks: ['browser-action-script'],
-		}),
-		new HtmlWebpackTagsPlugin({ files: ['browser-action-page.html'], tags: ['browser-action-styles.css'] }),
+		// new HtmlWebpackPlugin({
+		// 	title: 'AMBOSS Browser Addon Background',
+		// 	filename: 'background-page.html',
+		// 	template: 'source/tmp.html',
+		// 	chunks: ['background-script'],
+		// 	append: false
+		// }),
+		//
+		// new HtmlWebpackPlugin({
+		// 	title: 'AMBOSS Browser Addon Options Page',
+		// 	filename: 'options-ui-page.html',
+		// 	template: 'source/tmp.html',
+		// 	chunks: ['options-ui-script'],
+		// }),
+		// new HtmlWebpackTagsPlugin({ files: ['options-ui-page.html'], tags: ['options-ui-styles.css'] }),
+		//
+		// new HtmlWebpackPlugin({
+		// 	title: 'AMBOSS Browser Addon Browser Action Page',
+		// 	filename: 'browser-action-page.html',
+		// 	template: 'source/tmp.html',
+		// 	chunks: ['browser-action-script'],
+		// }),
+		// new HtmlWebpackTagsPlugin({ files: ['browser-action-page.html'], tags: ['browser-action-styles.css'] }),
 
 		new SizePlugin(),
 		new CopyWebpackPlugin([
 			{
 				from: '**/*',
 				context: 'source',
-				ignore: ['*.js', '*.html', 'media/*']
+				ignore: ['*.js', 'media/*']
 			},
 			{
 				from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js',

@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42638d77-fe70-460b-b4e1-1b50d83a3c37" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/source/tmp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/funding.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/browser-extension-001.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/browser-extension-001.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadSaveFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/downloadSaveFile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/source/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/source/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/media/ambosslogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/source/ambosslogo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/media/snippets_de.json" beforeDir="false" afterPath="$PROJECT_DIR$/source/snippets_de.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/media/snippets_en.json" beforeDir="false" afterPath="$PROJECT_DIR$/source/snippets_en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1593082997191</updated>
       <workItem from="1593083001973" duration="30000" />
-      <workItem from="1593084128934" duration="9757000" />
+      <workItem from="1593084128934" duration="11004000" />
     </task>
     <servers />
   </component>
