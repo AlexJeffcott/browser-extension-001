@@ -25,14 +25,16 @@ make getLatestNormalisedDESnippets
 make getLatestNormalisedENSnippets
 ```
 ## TODO
-0. add icons
+0. add icons to store page
+0. clean up icons in app
 0. add screenshots
 0. add AMBOSS loading spinner
 0. add feedback form
 0. direct users to hubspot form on uninstall
 0. use indicative.com
-0. further optimise build
+0. ~~further optimise build~~
 0. publish to firefox and edge
+0. publish to firefox for android
 0. find a better (less network intensive) way to update content without the user updating the extension
 0. add browser-action badges for pushing new updates, and the number of items found (for the glossary)
 0. add term feedback mechanism (dismiss if not interested?)

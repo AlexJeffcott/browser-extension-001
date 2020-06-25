@@ -1,6 +1,6 @@
 import optionsStorage from './options-storage';
-import snippetsEN from './media/snippets_en.json';
-import snippetsDE from './media/snippets_de.json';
+import snippetsEN from './snippets_en.json';
+import snippetsDE from './snippets_de.json';
 
 function getSnippets(lang) {
 	if (lang !== 'en' && lang !== 'de') {
