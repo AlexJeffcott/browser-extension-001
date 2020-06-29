@@ -47,11 +47,15 @@ form {
 	padding: 0.5rem;
 }
 
-.trash_icon {
-	width: 10px;
-	height: 10px;
+svg.trash_icon {
+	width: 1rem;
+	height: 1rem;
 	margin-left: 0.2rem;
-	padding-bottom: 0.3rem;
+	fill: red;
+}
+
+svg.trash_icon:hover {
+	cursor: pointer;
 }
 
 form > button[type='submit'] {

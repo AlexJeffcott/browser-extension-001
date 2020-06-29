@@ -2,10 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42638d77-fe70-460b-b4e1-1b50d83a3c37" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/source/helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/tmp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/ambosslogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/background-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/source/background-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/background-script.js" beforeDir="false" afterPath="$PROJECT_DIR$/source/background-script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/browser-action-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/source/browser-action-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/browser-action-script.js" beforeDir="false" afterPath="$PROJECT_DIR$/source/browser-action-script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/browser-polyfill.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/content-script-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/source/content-script-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/content-script.js" beforeDir="false" afterPath="$PROJECT_DIR$/source/content-script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/source/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/media/trash_icon_black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/media/trash_icon_red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/messaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/source/messaging.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/options-ui-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/source/options-ui-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/options-ui-script.js" beforeDir="false" afterPath="$PROJECT_DIR$/source/options-ui-script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/options-ui-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/source/options-ui-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/tracking-helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/source/tracking-helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,12 +80,22 @@
       <option name="presentableId" value="Default" />
       <updated>1593082997191</updated>
       <workItem from="1593083001973" duration="30000" />
-      <workItem from="1593084128934" duration="11411000" />
+      <workItem from="1593084128934" duration="23497000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state width="1638" height="302" key="GridCell.Tab.0.bottom" timestamp="1593093946340">
@@ -88,5 +114,13 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1638" height="302" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1593093946339" />
+    <state x="100" y="100" width="1480" height="850" key="VCS.FileHistoryDialog" timestamp="1593171785159">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="100" y="100" width="1480" height="850" key="VCS.FileHistoryDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1593171785159" />
+    <state x="541" y="280" width="598" height="490" key="find.popup" timestamp="1593162262795">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="541" y="280" width="598" height="490" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1593162262795" />
   </component>
 </project>

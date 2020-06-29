@@ -1,6 +1,8 @@
+import browser from 'webextension-polyfill'
 import {SEGMENT_WRITE_KEY} from './config';
 import optionsStorage from './options-storage';
 import {sendMessageToContentScript} from './messaging';
+import {isFirefoxOrChrome} from './utils'
 
 // The following IIFE snippet was taken from the following:
 // https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/
@@ -37,21 +39,6 @@ import {sendMessageToContentScript} from './messaging';
 		}
 	}
 })();
-
-function isFirefoxOrChrome() {
-	// Chrome 1 - 71
-	if (Boolean(window.chrome) && (Boolean(window.chrome.webstore) || Boolean(window.chrome.runtime))) {
-		return 'chrome';
-	}
-
-	// Firefox 1.0+
-	if (typeof InstallTrigger !== 'undefined') {
-		return 'firefox';
-	}
-
-	console.log('!! browser identification unsuccessful');
-	return 'unknown';
-}
 
 export async function track(title, _detailsObject = {}, _hostname) {
 	const {version} = browser.runtime.getManifest();

@@ -1,6 +1,8 @@
+import browser from 'webextension-polyfill'
 import {INSTALL_URL, UNINSTALL_URL} from './config';
 import {track} from './tracking-helpers';
 import {new_installation, updated, unspecified_install_event} from './event-names'
+
 
 browser.runtime.setUninstallURL(UNINSTALL_URL);
 

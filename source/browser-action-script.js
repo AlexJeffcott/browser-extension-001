@@ -1,10 +1,11 @@
+import browser from 'webextension-polyfill'
 import {h, render} from 'preact';
 import htm from 'htm';
 import {useEffect, useState} from 'preact/hooks';
 import optionsStorage from './options-storage';
 import { sendMessageToContentScript } from './messaging'
-import {BASE_URL} from './config';
 import {track} from './tracking-helpers';
+import {getHref} from './utils'
 import {
 	glossary_link_clicked,
 	action_opened,
@@ -121,10 +122,7 @@ function Term({title, etymology, description, id, destinations, language}) {
 	const [isClicked, setIsClicked] = useState(false);
 	const {anchor, label, lc_xid} = Array.isArray(destinations) && destinations[0] || {}
 
-	// href contains a string similar to the below example
-	// https://next.amboss.com/us/article/4N03Yg#Zefeb92d093a9fbf8b7c983722bdbb10d
-	const href = `${BASE_URL}${language === 'en' ? 'us' : 'de'}/article/${lc_xid}#${anchor}`;
-
+	const href = getHref({anchor, lc_xid, title, language})
 	const handleHeaderClick = () => {
 		track(isOpen ? action_opened : action_closed, {href, title});
 		setIsOpen(!isOpen);
@@ -153,6 +151,9 @@ function Term({title, etymology, description, id, destinations, language}) {
 		}, 1000)
 	}
 
+	// TODO: fix this content
+	const newLabel = label === "Open in Amboss" ? title : label
+
 	return html`<div key=${id} class="ambossContent">
 			<div class="ambossHeader" onClick=${handleHeaderClick}>${title}</div>
 			${isOpen && html`<div>
@@ -169,7 +170,7 @@ function Term({title, etymology, description, id, destinations, language}) {
 							</svg>
 						</div>
 						<div class="link_arrow_container" >
-							<h4>${label}</h4>
+							<h4>${newLabel}</h4>
 							<div class="arrow_container">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 									<line x1="5" y1="12" x2="19" y2="12"></line>

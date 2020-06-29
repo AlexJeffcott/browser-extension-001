@@ -1,122 +1,124 @@
 /* the popover target */
-.AMBOSS_MATCH_TOOLTIP > img {
-	position: relative;
-	left: 1px;
-	width: 0.9rem;
-	height: 0.9rem;
-	padding-bottom: 0.1rem;
+span.AMBOSS_MATCH_TOOLTIP > svg.ambossTooltipAnchorImg {
+	position: relative !important;
+	display: inline !important;
+	left: 1px !important;
+	width: 0.9rem !important;
+	height: 0.9rem !important;
+	padding-bottom: 0.1rem !important;
 }
 
 /* the popover itself */
 .ambossContent {
-	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif;
-	font-feature-settings: "lnum", "pnum", "kern", "liga", "clig";
-	-webkit-font-smoothing: antialiased;
-	font-style: normal;
-	font-weight: 400;
-	color: #303438;
-	padding: 1.5rem;
-	background-color: white;
-	box-shadow: rgba(61, 74, 84, 0.1) 0 3px 8px 0, rgba(61, 74, 84, 0.06) 0 3px 12px 0;
-	border-radius: 0.3rem;
+	font-family: Lato, -apple-system, BlinkMacSystemFont, "segoe ui", "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, arial, sans-serif !important;
+	font-feature-settings: "lnum", "pnum", "kern", "liga", "clig" !important;
+	-webkit-font-smoothing: antialiased !important;
+	font-style: normal !important;
+	font-weight: 400 !important;
+	color: #303438 !important;
+	padding: 1.5rem !important;
+	background-color: white !important;
+	box-shadow: rgba(61, 74, 84, 0.1) 0 3px 8px 0, rgba(61, 74, 84, 0.06) 0 3px 12px 0 !important;
+	border-radius: 0.3rem !important;
 }
 
-.ambossTooltipLogo{
-	padding-bottom: 1rem;
+.ambossTooltipLogo {
+	padding-bottom: 1rem !important;
 }
 
 .ambossSnippetTitle {
-	font-size: 16px;
-	font-weight: 700;
-	line-height: 24px;
-	letter-spacing: 0.2px;
-	color: rgb(54, 65, 73);
+	font-size: 16px !important;
+	font-weight: 700 !important;
+	line-height: 24px !important;
+	letter-spacing: 0.2px !important;
+	color: rgb(54, 65, 73) !important;
 }
 
 .ambossSnippetEtymology {
-	font-style: italic;
-	font-weight: normal;
-	font-size: 16px;
-	line-height: 24px;
-	letter-spacing: 0.2px;
+	font-style: italic !important;
+	font-weight: normal !important;
+	font-size: 16px !important;
+	line-height: 24px !important;
+	letter-spacing: 0.2px !important;
 }
 
 .ambossSnippetDescription {
-	margin-bottom: 1rem;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 13.7px;
-	line-height: 24px;
-	letter-spacing: 0.195714px;
-	color: #51616d;
+	margin-bottom: 1rem !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	font-size: 13.7px !important;
+	line-height: 24px !important;
+	letter-spacing: 0.195714px !important;
+	color: #51616d !important;
 }
 
 .ambossFooter {
-	width: calc(100% + 3rem);
-	display: flex;
-	margin-left: -1.5rem;
-	margin-bottom: -1.5rem;
-	flex-direction: column;
-	justify-content: flex-end;
-	border-top: 1px solid rgb(238, 242, 245);
+	width: calc(100% + 3rem) !important;
+	display: flex !important;
+	margin-left: -1.5rem !important;
+	margin-bottom: -1.5rem !important;
+	flex-direction: column !important;
+	justify-content: flex-end !important;
+	border-top: 1px solid rgb(238, 242, 245) !important;
 }
 
 .ambossFooter:hover {
-	background-color: rgba(238, 242, 245, 0.3);
+	background-color: rgba(238, 242, 245, 0.3) !important;
 }
 
-.ambossFooter > a {
-	padding: 1rem;
-	display: inline-flex;
-	text-decoration-line: none;
+
+div.ambossFooter > a.ambossTooltipAnchor {
+	padding: 1rem !important;
+	display: inline-flex !important;
+	text-decoration-line: none !important;
 }
 
 .icon_container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-left: -1rem;
-	margin-top: -1rem;
-	margin-bottom: -1rem;
-	min-width: 56px;
-	border-right: 1px solid rgb(238, 242, 245);
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	margin-left: -1rem !important;
+	margin-top: -1rem !important;
+	margin-bottom: -1rem !important;
+	min-width: 56px !important;
+	border-right: 1px solid rgb(238, 242, 245) !important;
 }
 
 .icon_container > svg {
-	color: rgb(153, 167, 179);
-	width: 30px;
-	height: 30px;
+	color: rgb(153, 167, 179) !important;
+	width: 30px !important;
+	height: 30px !important;
 }
 
 .link_arrow_container {
-	display: flex;
-	align-items: center;
-	align-content: center;
-	width: 90%;
-	padding-left: 5%;
-	padding-right: 5%;
+	display: flex !important;
+	align-items: center !important;
+	align-content: center !important;
+	width: 90% !important;
+	padding-left: 5% !important;
+	padding-right: 5% !important;
 }
 
 .link_arrow_container > p {
-	margin: 0;
-	padding: 0;
-	color: rgb(54, 65, 73);
-	font-size: 16px;
-	word-break: break-word;
-	font-weight: 400;
+	margin: 0 !important;
+	padding: 0 !important;
+	color: rgb(54, 65, 73) !important;
+	font-size: 16px !important;
+	word-break: break-word !important;
+	font-weight: 400 !important;
 }
 
 .arrow_container {
-	margin: 0;
-	padding: 0;
-	margin-left: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+	margin-left: auto !important;
 }
 
 .arrow_container > svg {
-	margin: 0;
-	padding: 0;
-	color: rgb(153, 167, 179);
-	width: 24px;
-	height: 24px;
-	flex-shrink: 0;
+	margin: 0 !important;
+	padding: 0 !important;
+	color: rgb(153, 167, 179) !important;
+	width: 24px !important;
+	height: 24px !important;
+	flex-shrink: 0 !important;
 }

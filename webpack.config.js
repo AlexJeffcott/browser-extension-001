@@ -31,16 +31,13 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
+		// new CleanWebpackPlugin(),
 		new SizePlugin(),
 		new CopyWebpackPlugin([
 			{
 				from: '**/*',
 				context: 'source',
-				ignore: ['*.js', 'media/*']
-			},
-			{
-				from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js',
+				ignore: ['*.js', 'snippets_*.json']
 			}
 		])
 	],

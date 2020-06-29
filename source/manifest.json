@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_extensionName__",
-	"version": "0.0.3",
+	"version": "0.0.4",
   	"default_locale": "en",
 	"description": "__MSG_extensionDescription__",
 	"homepage_url": "https://www.amboss.com",
@@ -13,7 +13,8 @@
 	  }
 	},
   "icons": {
-	  "128": "ambosslogo.png"
+	  "24": "ambosslogo_24x24.png",
+	  "48": "ambosslogo_48x48.png"
 	},
 	"permissions": [
 		"storage"
@@ -35,7 +36,7 @@
 		],
 		"matches": ["<all_urls>"],
 		"css": ["content-script-styles.css"],
-		"js": ["browser-polyfill.min.js", "content-script.js"]
+		"js": ["content-script.js"]
 	  }
 	],
 	"options_ui": {
